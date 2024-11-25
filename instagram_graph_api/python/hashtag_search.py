@@ -70,42 +70,43 @@ except : # default to coding hashtag
 params = getCreds() # params for api call
 params['hashtag_name'] = hashtag # add on the hashtag we want to search for
 hashtagInfoResponse = getHashtagInfo( params ) # hit the api for some data!
+print(hashtagInfoResponse)
 params['hashtag_id'] = hashtagInfoResponse['json_data']['data'][0]['id']; # store hashtag id
 
-print "\n\n\n\t\t\t >>>>>>>>>>>>>>>>>>>> HASHTAG INFO <<<<<<<<<<<<<<<<<<<<\n" # section heading
-print "\nHashtag: " + hashtag # display hashtag
-print "Hashtag ID: " + params['hashtag_id'] # display hashtag id
+print("\n\n\n\t\t\t >>>>>>>>>>>>>>>>>>>> HASHTAG INFO <<<<<<<<<<<<<<<<<<<<\n") # section heading
+print( "\nHashtag: " + hashtag )# display hashtag
+print( "Hashtag ID: " + params['hashtag_id'] )# display hashtag id
 
-print "\n\n\n\t\t\t >>>>>>>>>>>>>>>>>>>> HASHTAG TOP MEDIA <<<<<<<<<<<<<<<<<<<<\n" # section heading
+print( "\n\n\n\t\t\t >>>>>>>>>>>>>>>>>>>> HASHTAG TOP MEDIA <<<<<<<<<<<<<<<<<<<<\n" )# section heading
 params['type'] = 'top_media' # set call to get top media for hashtag
 hashtagTopMediaResponse = getHashtagMedia( params ) # hit the api for some data!
 
 for post in hashtagTopMediaResponse['json_data']['data'] : # loop over posts
-	print "\n\n---------- POST ----------\n" # post heading
-	print "Link to post:" # label
-	print post['permalink'] # link to post
-	print "\nPost caption:" # label
-	print post['caption'] # post caption
-	print "\nMedia type:" # label
-	print post['media_type'] # type of media
+	print( "\n\n---------- POST ----------\n" )# post heading
+	print( "Link to post:" )# label
+	print( post['permalink'] )# link to post
+	print( "\nPost caption:" )# label
+	print( post['caption'] )# post caption
+	print( "\nMedia type:" )# label
+	print( post['media_type'] )# type of media
 
-print "\n\n\n\t\t\t >>>>>>>>>>>>>>>>>>>> HASHTAG RECENT MEDIA <<<<<<<<<<<<<<<<<<<<\n" # section heading
+print( "\n\n\n\t\t\t >>>>>>>>>>>>>>>>>>>> HASHTAG RECENT MEDIA <<<<<<<<<<<<<<<<<<<<\n" )# section heading
 params['type'] = 'recent_media' # set call to get recent media for hashtag
 hashtagRecentMediaResponse = getHashtagMedia( params ) # hit the api for some data!
 
 for post in hashtagRecentMediaResponse['json_data']['data'] : # loop over posts
-	print "\n\n---------- POST ----------\n" # post heading
-	print "Link to post:" # label
-	print post['permalink'] # link to post
-	print "\nPost caption:" # label
-	print post['caption'] # post caption
-	print "\nMedia type:" # label
-	print post['media_type'] # type of media
+	print( "\n\n---------- POST ----------\n" )# post heading
+	print( "Link to post:" )# label
+	print( post['permalink'] )# link to post
+	print( "\nPost caption:" )# label
+	print( post['caption'] )# post caption
+	print( "\nMedia type:" )# label
+	print( post['media_type'] )# type of media
 
-print "\n\n\n\t\t\t >>>>>>>>>>>>>>>>>>>> USERS RECENTLY SEARCHED HASHTAGS <<<<<<<<<<<<<<<<<<<<\n" # section heading
+print( "\n\n\n\t\t\t >>>>>>>>>>>>>>>>>>>> USERS RECENTLY SEARCHED HASHTAGS <<<<<<<<<<<<<<<<<<<<\n" )# section heading
 getRecentSearchResponse = getRecentlySearchedHashtags( params ) # hit the api for some data!
 
 for hashtag in getRecentSearchResponse['json_data']['data'] : # looop over hashtags
-	print "\n\n---------- SEARCHED HASHTAG ----------\n" # searched heading
-	print "\nHashtag: " + hashtag['name'] # display hashtag
-	print "Hashtag ID: " + hashtag['id'] # display hashtag id
+	print( "\n\n---------- SEARCHED HASHTAG ----------\n" )# searched heading
+	print( "\nHashtag: " + hashtag['name'] )# display hashtag
+	print( "Hashtag ID: " + hashtag['id'] )# display hashtag id
